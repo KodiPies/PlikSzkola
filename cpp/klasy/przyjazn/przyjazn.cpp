@@ -1,49 +1,63 @@
 #include <iostream>
-#define _USE_MATH_DEFINES 
-#include <cmath>
 using namespace std;
 
-class Cone {
+class Dane
+{
 
-double radius;
-double height;
-public:
-void setCone(double); 
-double getCone();
-
-friend class Cylinder;
-};
-void Cone::setCone(double radiuss) {
-radius = radiuss;
-}
-double Cone::getCone() {
-return radius;
-}
-
-class Cylinder {
+    float height;
+    float radius;
 
 public:
-double objetosc(Cone);
+    void setHeight(float heightP)
+    {
+        height = heightP;
+    }
 
-double pi = 3.14;
+    void setRadius(float radiusP)
+    {
+        radius = radiusP;
+    }
+
+    float getHeight()
+    {
+        return height;
+    }
+
+    float getRadius()
+    {
+        return radius;
+    }
+
+    friend class Cylinder;
 };
-double Cylinder::objetosc(Cone cone) {
-   
-return pi * cone.radius * cone.radius;
-}
 
+class Cylinder
+{
+public:
+    void volume(Dane dane)
+    {
+        cout << "Objetosc walca: " << (3.14 * (dane.radius * dane.radius)) * dane.height << endl;
+    }
+};
+class Cone
+{
+public:
+    void volume(Dane dane)
+    {
+        cout << "Objetosc stozka: " << ((3.14 * (dane.getRadius() * dane.getRadius())) * dane.getHeight()) / 3 << endl;
+    }
+};
 
+int main()
+{
+    Dane dane;
+    dane.setHeight(10);
+    dane.setRadius(1);
 
+    Cylinder cylinder;
+    cylinder.volume(dane);
 
-
-
-
-
-
-
-
-
-
-int main(){
-return 0;
+    Cone cone;
+    cone.volume(dane);
+    return 0;
 }
