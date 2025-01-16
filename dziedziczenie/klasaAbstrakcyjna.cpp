@@ -5,7 +5,7 @@ using namespace std;
 class Zwierze{
 
     public:
-    virtual void getImie() = 0;
+    virtual void getNazwa() = 0;
 };
 class Czlowiek{
 
@@ -22,6 +22,12 @@ class Planeta: public Zwierze, public Czlowiek {
     cin >> imie;
     cout <<"Imie:  " << imie << endl;
     }
+    string nazwa;
+    virtual void getNazwa() {
+        cout <<"Podaj nazwa " << endl;
+    cin >> nazwa;
+    cout <<"Nazwa:  " << nazwa << endl;
+    }
 
 };
 
@@ -29,6 +35,7 @@ int main()
 {
     Planeta planeta;
     planeta.getImie();
+    planeta.getNazwa();
 
     
     
